@@ -1,9 +1,21 @@
 package converter
 
+import java.util.*
+
 fun main() {
-    println("145 centimeters is 1.45 meters\n" +
-            "2 miles is 3.2187 kilometers\n" +
-            "5.5 inches is 139.7 millimeters\n" +
-            "12 degrees Celsius is 53.6 degrees Fahrenheit\n" +
-            "3 pounds is 1.360776 kilograms")
+    println("Enter a number and a measure:")
+    val input = readLine()!!.lowercase(Locale.getDefault()).split(" ")
+    when (input[1]) {
+        "km", "kilometer", "kilometers" -> {
+            try {
+                val v = input[0].toInt()
+                var m = "kilometer"
+                if (v != 1) m += "s"
+                println("$v $m is ${v * 1000} meters")
+            } catch (e: Exception){
+                println("Wrong input")
+            }
+        }
+        else -> println("Wrong input")
+    }
 }
